@@ -1,30 +1,204 @@
 <template>
-  <view class="index">
-    <view>
-      <img src="" alt="">
-    </view>
-    {{ msg }}
-    <view class="btn">
-      <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
-    </view>
-    <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />
+  <view class="container">
+    <image class="page-bg" :src="bgUrl" mode="widthFix"/>
+    <div style="height: 230px"></div>
+    <div class="content-wrap">
+      <nut-tabs v-model="tabIndex" title-scroll="true" title-gutter="5" class="panel" >
+        <nut-tabpane v-for="item in categoryList" :title="item.categoryName">
+          <div style="white-space: nowrap;overflow-y: scroll;margin: 0 5px">
+            <image v-for="img in item.list" :src="img.url" mode="widthFix" class="img-item"/>
+          </div>
+        </nut-tabpane>
+      </nut-tabs>
+    </div>
   </view>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue';
+import './index.sass'
+import { reactive, toRefs} from 'vue';
 export default {
   name: 'Index',
   components: {
     
   },
   setup(){
+    function tabSwitch(item, index) {
+      console.log(item, index);
+    }
     const state = reactive({
-      msg: '欢迎使用 NutUI3.0 开发小程序',
-      msg2: '你成功了～',
-      type: 'text',
-      show: false,
-      cover: false
+      bgUrl:require('../assets/img/index_bg.jpg'),
+      categoryList:[
+        {
+          id:1,
+          categoryName:"虎年最火",
+          list:[
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            }
+          ]
+        },
+        {
+          id:2,
+          categoryName:"金钱豹",
+          list:[
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            }
+          ]
+        },
+        {
+          id:3,
+          categoryName:"呆萌虎",
+          list:[
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            }
+          ]
+        },
+        {
+          id:4,
+          categoryName:"简约可爱",
+          list:[
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            }
+          ]
+        },
+        {
+          id:5,
+          categoryName:"2022",
+          list:[
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            }
+          ]
+        },
+        {
+          id:6,
+          categoryName:"国庆",
+          list:[
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            }
+          ]
+        },
+        {
+          id:7,
+          categoryName:"中秋",
+          list:[
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            },
+            {
+              url:"https://niu.kaixin520.top/2022/01/1642609168-a7bb57ada697646.png"
+            }
+          ]
+        }
+      ],
+      tabIndex:0
     });
 
     const handleClick = (type, msg, cover = false) => {
@@ -35,8 +209,9 @@ export default {
     };
 
     return {
+      tabSwitch,
       ...toRefs(state),
-      handleClick
+      handleClick,
     }
   }
 }
