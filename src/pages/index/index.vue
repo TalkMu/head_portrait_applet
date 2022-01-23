@@ -20,15 +20,13 @@
         <image :class="[musicStatus?'cd_zhen cd_zhen_back':'cd_zhen cd_zhen_go']"
                src="../assets/img/cd_zhen.png"></image>
       </div>
-      <div>
-        <nut-tabs v-model="tabIndex" title-scroll="true" title-gutter="5" class="panel">
-          <nut-tabpane v-for="item in categoryList" :title="item.category_name">
-            <scroll-view :scroll-x="true" style="white-space: nowrap;">
-              <image v-for="img in item.list" :src="img.url" mode="scaleToFill" class="img-item" @tap="selectImg(img)"/>
-            </scroll-view>
-          </nut-tabpane>
-        </nut-tabs>
-      </div>
+      <nut-tabs v-model="tabIndex" title-scroll="true" title-gutter="5" class="panel">
+        <nut-tabpane v-for="item in categoryList" :title="item.category_name">
+          <scroll-view :scroll-x="true" style="white-space: nowrap;">
+            <image v-for="img in item.list" :src="img.url" mode="scaleToFill" class="img-item" @tap="selectImg(img)"/>
+          </scroll-view>
+        </nut-tabpane>
+      </nut-tabs>
 
       <div class="avatar-container">
         <div class="avatar-view">
